@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Agent Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <header class="dashboard-title">
+    <center><h1 style="color: black;"> Agent Dashboard</h1></center>
+  </header>
+
+<br><br>
+
+  <div class="action-bar">
+  <div class="dropdown" id="agentTypeDropdown">
+    <button class="dropbtn" onclick="toggleDropdown()">Create Agent ▼</button>
+    <div class="dropdown-content" id="dropdownMenu">
+      <a href="createAgent.html?type=single">Single Agent</a>
+      <a href="createAgent.html?type=multi">Multi-Agent</a>
+    </div>
+  </div>
+</div>
+
+   <br>
+
+<h2 class="section-title">List of Created Agents</h2>
+
+<div class="agents-container">
+  <!-- {% for agent in agents %} -->
+  <div class="agent-card">
+    <div class="agent-header">
+      <h3 class="agent-name">{{ agent.name }}</h3>
+      <a href="/use/{{ agent.id }}" class="activate-btn">USE</a>
+    </div>
+    <!-- <p><strong>Model:</strong> {{ agent.model }}</p>
+    <p><strong>Description:</strong> {{ agent.description }}</p>
+    <p><strong>Instructions:</strong> {{ agent.instructions }}</p>
+    <span class="badge">Active</span> -->
+  </div>
+  <!-- {% endfor %} -->
+</div>
+
+
+    <script>
+  function toggleDropdown() {
+    const menu = document.getElementById("dropdownMenu");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
+
+  // Close the dropdown if clicked outside
+  window.onclick = function (event) {
+    if (!event.target.matches('.dropbtn')) {
+      const dropdowns = document.getElementsByClassName("dropdown-content");
+      for (let i = 0; i < dropdowns.length; i++) {
+        dropdowns[i].style.display = "none";
+      }
+    }
+  }
+</script>
+
+    
+  </main>
+
+</body>
+</html>
